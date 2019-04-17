@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "915099497919",
+    "firebase_url": "https://onlinesaleapp-7d3a9.firebaseio.com",
+    "project_id": "onlinesaleapp-7d3a9",
+    "storage_bucket": "onlinesaleapp-7d3a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915099497919:android:2ef34816efab981b",
+        "android_client_info": {
+          "package_name": "com.example.duyda.onlinesaleshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915099497919-8jdprrrcbjcsntvjf72mn7jt1bs2ets1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duyda.onlinesaleshop",
+            "certificate_hash": "9a11b4e4c4278d04090fe4b59a636307a9e5c625"
+          }
+        },
+        {
+          "client_id": "915099497919-noiok5r19l3cg940v5bm78an32jkv0qv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duyda.onlinesaleshop",
+            "certificate_hash": "204f8e16834ed726cd008ea091cccafc7c81e87c"
+          }
+        },
+        {
+          "client_id": "915099497919-a562qn6lsn2mmq6h7j6p169e8rr63kr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duyda.onlinesaleshop",
+            "certificate_hash": "c20e1c11df85faec35a2462ce42b57ec5371bc55"
+          }
+        },
+        {
+          "client_id": "915099497919-s7n676s1lrb6q264s66edqju7qhdt7l3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duyda.onlinesaleshop",
+            "certificate_hash": "b6fb6bffb76799f9bccec73a08e0d114fce13eee"
+          }
+        },
+        {
+          "client_id": "915099497919-fqbkknmv1so68qkjtqboliovv06snclm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duyda.onlinesaleshop",
+            "certificate_hash": "f2cb8ce2d51214d0105cf7a1bfe85252df94b185"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHgSVSrSXlWXWKGgUdHu2UCb6Qaavwj-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915099497919-vqj6e1djs2c3i73kv5v1rhcl7u9t668g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915099497919:android:4521d108ba1bc827",
+        "android_client_info": {
+          "package_name": "com.example.nkoha.saleshoponline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915099497919-vb4ks1uje26vqr3s3stsgkpc96ggahqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nkoha.saleshoponline",
+            "certificate_hash": "b6fb6bffb76799f9bccec73a08e0d114fce13eee"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHgSVSrSXlWXWKGgUdHu2UCb6Qaavwj-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915099497919-vqj6e1djs2c3i73kv5v1rhcl7u9t668g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915099497919:android:5920de3503a2d18c",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.fcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915099497919-jgmi991clamm7indpoq1pf1fvs5eh98b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.quickstart.fcm",
+            "certificate_hash": "c20e1c11df85faec35a2462ce42b57ec5371bc55"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHgSVSrSXlWXWKGgUdHu2UCb6Qaavwj-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915099497919-vqj6e1djs2c3i73kv5v1rhcl7u9t668g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
