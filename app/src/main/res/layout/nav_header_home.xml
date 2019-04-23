@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Duy"
+        android:text="User Name"
         android:textColor="@android:color/holo_green_dark"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

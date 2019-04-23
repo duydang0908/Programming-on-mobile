@@ -162,6 +162,7 @@ public class ProductList extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         adapter.stopListening();
+
     }
 
     private void loadProductList() {
@@ -229,18 +230,21 @@ public class ProductList extends AppCompatActivity {
     }
 
     private void startSearch(CharSequence text) {
+        String str = text.toString().toLowerCase();
+        String search_text = str.substring(0, 1).toUpperCase() + str.substring(1);
         Query query = FirebaseDatabase
                 .getInstance()
                 .getReference("Product")
                 .orderByChild("Name")
-                .equalTo(text.toString());
+                .startAt(search_text);
 
         FirebaseRecyclerOptions<Product> options =
                 new FirebaseRecyclerOptions.Builder<Product>()
                         .setQuery(query, Product.class)
                         .build();
+//        adapter.stopListening();
 
-        searchAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
             @Override
             public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
@@ -250,25 +254,44 @@ public class ProductList extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
+            protected void onBindViewHolder(@NonNull final ProductViewHolder holder, final int position, @NonNull final Product model) {
                 holder.product_name.setText(model.getName());
+                holder.product_price.setText(String.format("%s vnđ", model.getPrice().toString()));
                 Picasso.with(getBaseContext()).load(model.getImage())
                         .into(holder.product_image);
+
+                if (localDB.isFavorite(adapter.getRef(position).getKey()))
+                    holder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+
+                holder.fav_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!localDB.isFavorite(adapter.getRef(position).getKey())) {
+                            localDB.addToFavorites(adapter.getRef(position).getKey());
+                            holder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            Toast.makeText(ProductList.this, "" + model.getName() + "was added to favorites!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            localDB.removeToFavorites(adapter.getRef(position).getKey());
+                            holder.fav_image.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                            Toast.makeText(ProductList.this, "" + model.getName() + "was removed to favorites!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
                 final Product clickItem = model;
                 holder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Intent productDetail = new Intent(ProductList.this, ProductDetail.class);
-                        productDetail.putExtra("ProductId", searchAdapter.getRef(position).getKey());
+                        productDetail.putExtra("ProductId", adapter.getRef(position).getKey());
                         startActivity(productDetail);
                     }
                 });
             }
 
         };
-
-        recyclerView.setAdapter(searchAdapter);
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
     }
 
     private void loadSuggest() {

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome1"
     tools:context=".ProductList">
 
     <com.mancj.materialsearchbar.MaterialSearchBar
@@ -12,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:elevation="10dp"
         app:mt_hint="Enter your search..."
         app:mt_speechMode="false" />
 
@@ -20,6 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchBar"
+        android:elevation="10dp"
+        android:background="@drawable/slider_background"
         android:scrollbars="vertical" />
 
 </RelativeLayout>

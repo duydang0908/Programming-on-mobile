@@ -18,7 +18,6 @@
             android:layout_marginRight="5dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:text="duy@gmail.com"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:textSize="30sp"
@@ -27,23 +26,22 @@
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:text="123456"
-            android:textColor="#A0ffffff"
-            android:textColorHint="@android:color/white"
-            android:textSize="30sp"
-            android:layout_below="@+id/edtEmail"
-            app:met_baseColor="@android:color/white"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@android:color/white"
-            app:met_singleLineEllipsis="true" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtEmail"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="30sp"
+        app:met_baseColor="@android:color/white"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@android:color/white"
+        app:met_singleLineEllipsis="true" />
 
 
 <LinearLayout
