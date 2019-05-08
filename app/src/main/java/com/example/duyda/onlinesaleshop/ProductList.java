@@ -70,10 +70,7 @@ public class ProductList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/my_font.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+
 
         setContentView(R.layout.activity_product_list);
 
@@ -225,7 +222,7 @@ public class ProductList extends AppCompatActivity {
             }
 
         };
-
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 

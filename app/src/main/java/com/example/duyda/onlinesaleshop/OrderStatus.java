@@ -1,6 +1,7 @@
 package com.example.duyda.onlinesaleshop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.duyda.onlinesaleshop.Common.Common;
 import com.example.duyda.onlinesaleshop.Interface.ItemClickListener;
+import com.example.duyda.onlinesaleshop.Models.Order;
 import com.example.duyda.onlinesaleshop.Models.Request;
 import com.example.duyda.onlinesaleshop.ViewHolder.OrderViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -50,10 +52,7 @@ public class OrderStatus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/my_font.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+
 
 
         setContentView(R.layout.activity_order_status);
@@ -94,22 +93,45 @@ public class OrderStatus extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<Request, OrderViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull OrderViewHolder holder, int position, @NonNull Request model) {
+            protected void onBindViewHolder(@NonNull OrderViewHolder holder, int position, @NonNull final Request model) {
                 holder.txtOderId.setText(adapter.getRef(position).getKey());
                 holder.txtOrderStatus.setText(convertCodeToStatus(model.getStatus()));
                 holder.txtOrderAddress.setText(model.getAddress());
                 holder.txtOrderPhone.setText(model.getPhone());
+                holder.txtOrderDate.setText(Common.getDate(Long.parseLong(adapter.getRef(position).getKey())));
 
                 holder.setItemClickListener(new ItemClickListener() {
 
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        return;
+                        if(!isLongClick)
+                        {
+//                            Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
+//                            Common.currentRequest = model;
+//                            startActivity(trackingOrder);
+
+                            Intent orderDetail = new Intent(OrderStatus.this,OrderDetail.class);
+                            Common.currentRequest = model;
+                            orderDetail.putExtra("OrderId", adapter.getRef(position).getKey());
+                            startActivity(orderDetail);
+                        }
+                        else
+                        {
+                            Intent orderDetail = new Intent(OrderStatus.this,OrderDetail.class);
+                            Common.currentRequest = model;
+                            orderDetail.putExtra("OrderId", adapter.getRef(position).getKey());
+                            startActivity(orderDetail);
+
+//                            Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
+//                            Common.currentRequest = model;
+//                            startActivity(trackingOrder);
+                        }
+                        adapter.startListening();
+                        recyclerView.setAdapter(adapter);
                     }
                 });
 
             }
-
             @NonNull
             @Override
             public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

@@ -71,10 +71,7 @@ public class ProductDetail extends AppCompatActivity implements RatingDialogList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/my_font.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+
 
         setContentView(R.layout.activity_product_detail);
 
@@ -134,14 +131,14 @@ public class ProductDetail extends AppCompatActivity implements RatingDialogList
     }
 
     private void loadRatingProduct(String productId) {
+        com.google.firebase.database.Query productRating = ratingTbl.orderByChild("productId").equalTo(productId);
 
-        ratingTbl.child(productId).addValueEventListener(new ValueEventListener() {
+        productRating.addValueEventListener(new ValueEventListener() {
             int count = 0, sum = 0;
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshop : dataSnapshot.getChildren()) {
-                    Rating item = postSnapshop.getValue(Rating.class);
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Rating item = postSnapshot.getValue(Rating.class);
                     sum += Integer.parseInt(item.getRateValure());
                     count++;
                 }
@@ -156,6 +153,7 @@ public class ProductDetail extends AppCompatActivity implements RatingDialogList
 
             }
         });
+
 
     }
 

@@ -58,10 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/my_font.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+
 
 
         setContentView(R.layout.activity_login);
@@ -99,9 +96,12 @@ public class LoginActivity extends AppCompatActivity {
                     mDialog.show();
                     final String email = edtEmail.getText().toString();
                     final String password = edtPassword.getText().toString();
-                    if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
+                    if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                         Toast.makeText(LoginActivity.this, "Fill full information", Toast.LENGTH_SHORT).show();
-                    else {
+                        mDialog.dismiss();
+                    }
+                    else
+                        {
                         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {

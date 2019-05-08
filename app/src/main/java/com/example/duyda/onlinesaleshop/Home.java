@@ -79,10 +79,7 @@ public class Home extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/my_font.otf")
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+
 
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -229,6 +226,7 @@ public class Home extends AppCompatActivity
                         .build();
 
         adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
+            @NonNull
             @Override
             public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
@@ -254,7 +252,7 @@ public class Home extends AppCompatActivity
             }
 
         };
-
+        adapter.notifyDataSetChanged();
         recycler_product.setAdapter(adapter);
     }
 
